@@ -14,7 +14,7 @@ Interact with the contact form on the www.issplaylist.com website. What is the f
 2. Typed `Mike` in the first name form box and clicked **Submit**.
 3. The response page displayed the flag.
 
-**Answer:** 
+**Flag:** 
 `NetWars{ReceivedSubmission}`
 
 ---
@@ -119,7 +119,7 @@ Administrators for the www.issplaylist.com site frequently examine the contact p
 **Steps Taken:**
 1. Using the command line, `curl -k -b "authtoken=0f186582606b62965d90e772e76a8a5620b11af9" https://www.issplaylist.com/admin.html | grep -i NetWars`
 
-**Answer:**
+**Flag:**
 `NetWars{CongratsAdmin}`
 
 ---

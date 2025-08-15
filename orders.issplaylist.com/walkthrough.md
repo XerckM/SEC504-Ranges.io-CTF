@@ -84,7 +84,7 @@ I first checked the script’s usage instructions with:
 
 I tried running it directly against the base site URL, but it came back saying the target was not vulnerable. For a moment I thought maybe I had gone down the wrong path, but then I realized I was probably missing a critical detail.  
 
-After carefully re-reading the exploit script, I noticed that it specifically mentioned needing a **`.action` endpoint**. Sure enough, in the commented area of the exploit there was an example URL:  
+After googling more about the exploit script, I found out that it mentioned needing a **`.action` endpoint**. Sure enough, in the commented area of the exploit script in **ClippedBin** there was the target URL left by the previous attackers:  
 
 ```
 http://orders.issplaylist.com/showcase/help.action

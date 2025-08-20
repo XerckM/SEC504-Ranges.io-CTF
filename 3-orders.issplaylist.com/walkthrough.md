@@ -1,7 +1,7 @@
 # SEC504 Ranges.io CTF - Walkthrough
 
 This document contains my personal step-by-step solutions for the **orders.issplaylist.com** section challenges. 
-I’ve written it as if I am walking someone through how I solved each challenge, including the reasoning, challenges I faced, and how I worked through them. 
+Each section includes **question**, **steps taken**, and **answer/flag**.
 
 ---
 
@@ -18,8 +18,12 @@ https://orders.issplaylist.com/robots.txt
 
 Sure enough, the file was there, and it revealed the flag. 
 
-**Flag:** 
-`NetWars{ValuableReconData}`
+<details>
+  <summary>Click to reveal the flag</summary>
+
+  `NetWars{ValuableReconData}`
+
+</details>
 
 ---
 
@@ -36,8 +40,12 @@ Disallow: struts2-showcase-2.3.14
 
 This immediately told me the Apache Struts version in use was **2.3.14**. 
 
-**Answer:** 
-`2.3.14`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `2.3.14`
+
+</details>
 
 ---
 
@@ -48,8 +56,12 @@ Research the version of Apache Struts using in-game assets. Which CVE entry desc
 **Steps Taken:**
 To answer this, I used **ClippedBin**, the OSINT resource provided in the CTF. I typed “struts” into the search bar and scanned the results. Among them was an exploit post, and at the top of that post in the comment area, I found the CVE reference. This CVE tied directly to the Apache Struts version I had identified earlier. 
 
-**Answer:** 
-`CVE-2018-11776`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `CVE-2018-11776`
+
+</details>
 
 ---
 
@@ -60,8 +72,12 @@ Using in-game assets, identify an exploit left behind by the attackers. Enter th
 **Steps Taken:**
 Still working within **ClippedBin**, I opened the exploit code that corresponded to CVE-2018-11776. Right at the top of the script, the author had left their name in the comments. That’s how I was able to clearly identify the person behind it. 
 
-**Answer:** 
-`Mazin Ahmed`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `Mazin Ahmed`
+
+</details>
 
 ---
 
@@ -116,16 +132,14 @@ The output listed several files, and among them was the one I was after: `Flag.t
 ./struts-exploit.py -u https://orders.issplaylist.com/showcase/help.action -c 'cat /opt/tomcat/webapps/ROOT/Flag.txt' --exploit
 ```
 
-The exploit ran successfully, and the flag was printed out: 
+The exploit ran successfully, and the flag was printed out.
 
-```
-NetWars{SuccessfulExploit}
-```
+<details>
+  <summary>Click to reveal the flag</summary>
 
-That moment was a big win — it felt like everything clicked after the earlier false start. 
+  `NetWars{SuccessfulExploit}`
 
-**Flag:** 
-`NetWars{SuccessfulExploit}`
+</details>
 
 ---
 
@@ -150,8 +164,12 @@ I listed the directory again, but this time included hidden files:
 
 And there it was — a `.htpasswd` file! Dumping this file with `cat` revealed both the flag and a password hash. I saved the hash into my `credentials-store.hashes` file so I could try to crack it later. 
 
-**Flag:** 
-`NetWars{HTTPAuthHash}`
+<details>
+  <summary>Click to reveal the flag</summary>
+
+  `NetWars{HTTPAuthHash}`
+
+</details>
 
 ---
 
@@ -192,8 +210,12 @@ tomcat:$apr1$d576nE7M$UK.ZbyzeReAsq0cdrk2yP/:tacmot
 
 There it was, at the end of the hash. 
 
-**Answer:** 
-`tacmot`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `tacmot`
+
+</details>
 
 ---
 
@@ -210,8 +232,12 @@ ssh tomcat@orders.issplaylist.com
 
 When prompted, I entered the cracked password `tacmot`. The connection succeeded, and upon login, the flag was displayed. 
 
-**Flag:** 
-`NetWars{RemoteAccessSuccess}`
+<details>
+  <summary>Click to reveal the flag</summary>
+
+  `NetWars{RemoteAccessSuccess}`
+
+</details>
 
 ---
 
@@ -228,8 +254,12 @@ sudo -l
 
 The output showed that the `tomcat` user was allowed to run the `chmod` command as root.  
 
-**Answer:**  
-`chmod`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `chmod`
+
+</details>
 
 ---
 
@@ -252,8 +282,12 @@ cat /etc/shadow
 
 This revealed the flag along with additional hashes, which I saved into `credentials-store.hashes` for later cracking.  
 
-**Flag:**  
-`NetWars{PrivilegedAccess}`
+<details>
+  <summary>Click to reveal the flag</summary>
+
+  `NetWars{PrivilegedAccess}`
+
+</details>
 
 ---
 
@@ -284,8 +318,12 @@ hashcat -a 0 -m 500 credentials-store.hashes /usr/share/wordlists/passwords.txt 
 
 The results revealed the plaintext password for the `jorestes` account.  
 
-**Answer:**  
-`Carolina1`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `Carolina1`
+
+</details>
 
 ---
 
@@ -296,6 +334,10 @@ What is the login password for the pemma user account?
 **Steps Taken:**  
 Since I had already cracked the hash file with hashcat, the results also revealed the plaintext password for the `pemma` account.  
 
-**Answer:**  
-`spacestation`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `spacestation`
+
+</details>
 

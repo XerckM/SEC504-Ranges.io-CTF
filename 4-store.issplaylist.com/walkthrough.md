@@ -1,7 +1,7 @@
 # SEC504 Ranges.io CTF - Walkthrough
 
 This document contains my personal step-by-step solutions for the **store.issplaylist.com** section challenges.  
-I’ve written it as if I am walking someone through how I solved each challenge, including the reasoning, obstacles I faced, and how I worked through them. 
+Each section includes **question**, **steps taken**, and **answer/flag**.
 
 ---
 
@@ -10,8 +10,12 @@ I’ve written it as if I am walking someone through how I solved each challenge
 
 **Steps Taken:** Visiting [store.issplaylist.com](https://store.issplaylist.com/) showed a variety of merchandise on the homepage. Looking closely, each set of merchandise is separated by category. Comparing the choices from the question to the categories available on the homepage revealed the answer.
 
-**Answer:**  
-`Sporting Goods`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `Sporting Goods`
+
+</details>
 
 ---
 
@@ -20,8 +24,12 @@ I’ve written it as if I am walking someone through how I solved each challenge
 
 **Steps Taken:** While on the website, I clicked the `Classic Shirt` item, right-clicked on the image, and selected **Open Image in New Tab**. The URL endpoint displayed the file name directly.
 
-**Answer:**  
-`00001-Full.jpg`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `00001-Full.jpg`
+
+</details>
 
 ---
 
@@ -30,8 +38,12 @@ I’ve written it as if I am walking someone through how I solved each challenge
 
 **Steps Taken:** Following the same steps as above, I clicked the `Tote Bag` item, opened the image in a new tab, and noted the filename from the URL.
 
-**Answer:**  
-`00011-Full.jpg`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `00011-Full.jpg`
+
+</details>
 
 ---
 
@@ -52,8 +64,12 @@ ffuf -w numbers.txt -u https://store.issplaylist.com/static/images/FUZZ-Full.jpg
 
 This quickly revealed 16 valid images. Browsing through them, I identified the sneaker image.
 
-**Answer:**  
-`00014-Full.jpg`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `00014-Full.jpg`
+
+</details>
 
 ---
 
@@ -62,8 +78,12 @@ This quickly revealed 16 valid images. Browsing through them, I identified the s
 
 **Steps Taken:** From the same image list generated earlier, I located the dog clothing picture. The flag was embedded directly in the image.
 
-**Flag:**  
-`NetWars{DogHoodie}`
+<details>
+  <summary>Click to reveal the flag</summary>
+
+  `NetWars{DogHoodie}`
+
+</details>
 
 ---
 
@@ -74,8 +94,12 @@ This quickly revealed 16 valid images. Browsing through them, I identified the s
 
 The checkout button’s script revealed that it would only work if the cart total was **$0** and all form fields were filled. I remembered that the **Stellar Soundwaves PDF** cost $0. I added it to the cart, filled the form with placeholder text (using `asd@email.com` for the email), and submitted. This successfully processed the order, and the receipt displayed the flag!
 
-**Flag:**  
-`NetWars{YouHaveReceipts}`
+<details>
+  <summary>Click to reveal the flag</summary>
+
+  `NetWars{YouHaveReceipts}`
+
+</details>
 
 ---
 
@@ -90,8 +114,12 @@ ffuf -w numbers.txt -u https://store.issplaylist.com/receipt-FUZZ -s
 
 This found 14 valid receipts. Manually browsing through them revealed the PIN.
 
-**Answer:**  
-`0523`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `0523`
+
+</details>
 
 ---
 
@@ -100,8 +128,12 @@ This found 14 valid receipts. Manually browsing through them revealed the PIN.
 
 **Steps Taken:** All of the receipts contained a link to a collectible card. Opening the link displayed the card image, which clearly listed the genre.
 
-**Answer:**  
-`Classical`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `Classical`
+
+</details>
 
 ---
 
@@ -116,16 +148,24 @@ https://store.issplaylist.com/stellarsoundwaves/ss-Y2xhc3NpY2Fs
 
 By simply deleting the last character, the page revealed the hidden flag.
 
-**Flag:**  
-`NetWars{Base64Encoding}`
+<details>
+  <summary>Click to reveal the flag</summary>
+
+  `NetWars{Base64Encoding}`
+
+</details>
 
 ---
 
 ## Music Genre List
-**Steps Taken:** Using **ClippedBin**, I searched for the keyword `genre`. This led me to a post by *Whips Cough Sisters* containing a list of music genres.
+**Steps Taken:** Using **ClippedBin**, I searched for the keyword `genre`. This led me to a post name *Whips Cough Sisters* containing a list of music genres.
 
-**Answer:**  
-`antifolk`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `antifolk`
+
+</details>
 
 ---
 
@@ -134,7 +174,7 @@ By simply deleting the last character, the page revealed the hidden flag.
 
 **Steps Taken:** From the previous URL tampering challenge, I noticed the string `Y2xhc3NpY2Fs` was base64 for `classical`. This gave me the idea to brute-force other valid cards by encoding genre names into base64.  
 
-I created a text file with genres (`genres.txt`) and converted them into base64 with a one-liner shell script:
+I created a text file with genres (`genres.txt`), using the genre list from the previous challenge, and converted them into base64 with a one-liner shell script:
 
 ```bash
 while IFS= read -r line; do echo -n "$line" | base64; done < genres.txt > base64-genres.txt
@@ -150,8 +190,12 @@ ffuf -w base64-genres.txt -u https://store.issplaylist.com/stellarsoundwaves/ss-
 
 This revealed multiple valid collector’s cards. Checking them in Firefox eventually led to the final flag.
 
-**Flag:**  
-`NetWars{PunkRock}`
+<details>
+  <summary>Click to reveal the flag</summary>
+
+  `NetWars{PunkRock}`
+
+</details>
 
 ---
 

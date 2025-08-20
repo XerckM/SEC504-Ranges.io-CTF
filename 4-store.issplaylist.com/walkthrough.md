@@ -10,6 +10,7 @@ Each section includes **question**, **steps taken**, and **answer/flag**.
 
 **Steps Taken:** Visiting [store.issplaylist.com](https://store.issplaylist.com/) showed a variety of merchandise on the homepage. Looking closely, each set of merchandise is separated by category. Comparing the choices from the question to the categories available on the homepage revealed the answer.
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -24,6 +25,7 @@ Each section includes **question**, **steps taken**, and **answer/flag**.
 
 **Steps Taken:** While on the website, I clicked the `Classic Shirt` item, right-clicked on the image, and selected **Open Image in New Tab**. The URL endpoint displayed the file name directly.
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -38,6 +40,7 @@ Each section includes **question**, **steps taken**, and **answer/flag**.
 
 **Steps Taken:** Following the same steps as above, I clicked the `Tote Bag` item, opened the image in a new tab, and noted the filename from the URL.
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -64,6 +67,7 @@ ffuf -w numbers.txt -u https://store.issplaylist.com/static/images/FUZZ-Full.jpg
 
 This quickly revealed 16 valid images. Browsing through them, I identified the sneaker image.
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -78,6 +82,7 @@ This quickly revealed 16 valid images. Browsing through them, I identified the s
 
 **Steps Taken:** From the same image list generated earlier, I located the dog clothing picture. The flag was embedded directly in the image.
 
+**Flag:**
 <details>
   <summary>Click to reveal the flag</summary>
 
@@ -94,6 +99,7 @@ This quickly revealed 16 valid images. Browsing through them, I identified the s
 
 The checkout button’s script revealed that it would only work if the cart total was **$0** and all form fields were filled. I remembered that the **Stellar Soundwaves PDF** cost $0. I added it to the cart, filled the form with placeholder text (using `asd@email.com` for the email), and submitted. This successfully processed the order, and the receipt displayed the flag!
 
+**Flag:**
 <details>
   <summary>Click to reveal the flag</summary>
 
@@ -114,6 +120,7 @@ ffuf -w numbers.txt -u https://store.issplaylist.com/receipt-FUZZ -s
 
 This found 14 valid receipts. Manually browsing through them revealed the PIN.
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -128,6 +135,7 @@ This found 14 valid receipts. Manually browsing through them revealed the PIN.
 
 **Steps Taken:** All of the receipts contained a link to a collectible card. Opening the link displayed the card image, which clearly listed the genre.
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -148,6 +156,7 @@ https://store.issplaylist.com/stellarsoundwaves/ss-Y2xhc3NpY2Fs
 
 By simply deleting the last character, the page revealed the hidden flag.
 
+**Flag:**
 <details>
   <summary>Click to reveal the flag</summary>
 
@@ -160,6 +169,7 @@ By simply deleting the last character, the page revealed the hidden flag.
 ## Music Genre List
 **Steps Taken:** Using **ClippedBin**, I searched for the keyword `genre`. This led me to a post name *Whips Cough Sisters* containing a list of music genres.
 
+**Answer:**
 <details>
   <summary>Click to reveal the answer</summary>
 
@@ -190,6 +200,7 @@ ffuf -w base64-genres.txt -u https://store.issplaylist.com/stellarsoundwaves/ss-
 
 This revealed multiple valid collector’s cards. Checking them in Firefox eventually led to the final flag.
 
+**Flag:**
 <details>
   <summary>Click to reveal the flag</summary>
 

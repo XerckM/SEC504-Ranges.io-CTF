@@ -11,8 +11,12 @@ Each section includes the **objective**, **approach**, and **answer/flag**.
 **Steps Taken:**
 I navigated to [https://www.issplaylist.com/](https://www.issplaylist.com/) and clicked on the **Company** tab in the navigation bar. Once there, I used `Ctrl + F` and searched for the name **Jerald**. That quickly brought me to Jerald Orestes in the employee list, where I saw his job title displayed.  
 
-**Answer:**  
-`Web Developer`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `Web Developer`
+
+</details>
 
 ---
 
@@ -22,8 +26,12 @@ I navigated to [https://www.issplaylist.com/](https://www.issplaylist.com/) and 
 **Steps Taken:**
 While still on the **Company** page, I hovered my mouse over several employee names. I noticed that each name revealed a pattern in the URLs, which contained usernames. By checking a few examples, I figured out the convention they used: first initial of the first name + full last name. For Jerald Orestes, that became `jorestes`.  
 
-**Answer:**  
-`First Initial + Last Name` (e.g., jorestes)
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `First Initial + Last Name` (e.g., jorestes)
+
+</details>
 
 ---
 
@@ -33,8 +41,12 @@ While still on the **Company** page, I hovered my mouse over several employee na
 **Steps Taken:**
 When I opened ClippedBin, I first landed on a “Create” page with no obvious flag. I decided to explore other sections and found **Recent** and **Trending**, both of which had a search bar. Knowing that the flag format was `NetWars{FLAG}`, I tried searching for terms connected to ISS Playlist, like `NetWars` itself. This search led me to a link titled *Jackets Play Hands*. Opening it revealed the flag I needed.  
 
-**Flag:**  
-`NetWars{ImportantOSINT}`
+<details>
+  <summary>Click to reveal the flag</summary>
+
+  `NetWars{ImportantOSINT}`
+
+</details>
 
 ---
 
@@ -44,8 +56,12 @@ When I opened ClippedBin, I first landed on a “Create” page with no obvious 
 **Steps Taken:**
 I used the ClippedBin search again, this time with the keyword `passwords`. That led me to a leaked list. Looking through it carefully, I noticed one particular password repeated four times. That repetition made it stand out as the one the question was asking for.  
 
-**Answer:**  
-`spacestation`
+<details>
+  <summary>Click to reveal the answer</summary>
+
+  `spacestation`
+
+</details>
 
 ---
 
@@ -55,8 +71,12 @@ I used the ClippedBin search again, this time with the keyword `passwords`. That
 **Steps Taken:**
 I visited [cam.issplaylist.com](http://cam.issplaylist.com) directly. The login page displayed a banner across the bottom that contained the flag. No login was required for this part.  
 
-**Flag:**  
-`NetWars{WebcamServer}`
+<details>
+  <summary>Click to reveal the flag</summary>
+
+  `NetWars{WebcamServer}`
+
+</details>
 
 ---
 
@@ -69,8 +89,12 @@ Knowing this section was OSINT-related, I searched ClippedBin again, this time f
 - **Username:** `admin`  
 - **Password:** `admin`  
 
-**Flag:**  
-`NetWars{WebcamLoggedInAccess}`
+<details>
+  <summary>Click to reveal the flag</summary>
+
+  `NetWars{WebcamLoggedInAccess}`
+
+</details>
 
 ---
 
@@ -80,6 +104,11 @@ Knowing this section was OSINT-related, I searched ClippedBin again, this time f
 **Steps Taken:**
 Once inside the camera system, I experimented with the controls to move the camera around the office. While scanning the environment, I spotted writing on a whiteboard. It said that Bridget needed to follow up with a specific person, and that gave me the answer.  
 
-**Answer:**  
-`Phyliss`
+<details>
+  <summary>Click to reveal the answer</summary>
 
+  `Phyliss`
+
+</details>
+
+---
